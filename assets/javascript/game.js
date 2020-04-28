@@ -1,7 +1,7 @@
 const goalMade = document.querySelector("#goal");
 const goalMiss = document.querySelector("#miss");
 let shotChance = 0;
-let timeout = 0;
+let countdownNumber = 3;
 
 // JS for the reset button and counter
 let resetCount = 0;
@@ -40,18 +40,26 @@ let teamOneNumShots = 0;
 let teamOneNumGoals = 0;
 teamOneShootButton.addEventListener("click", function () {
     
-    teamOneShots.innerHTML = teamOneNumShots += 1;
-    
-    shotChance = Math.random();
-    console.log(shotChance);
-    
-    if(shotChance>0.5) {
-        teamOneGoals.innerHTML = teamOneNumGoals += 1;
-        goalMade.play();
-    }
-    else {
-        teamOneGoals.innerHTML = teamOneNumGoals;
-        goalMiss.play();
+    if(countdownNumber >= 3) {
+
+        countdownNumber = 0;
+
+        teamOneShots.innerHTML = teamOneNumShots += 1;
+        
+        shotChance = Math.random();
+        console.log(shotChance);
+        
+        if(shotChance>0.5) {
+            teamOneGoals.innerHTML = teamOneNumGoals += 1;
+            goalMade.play();
+        }
+        else {
+            teamOneGoals.innerHTML = teamOneNumGoals;
+            goalMiss.play();
+            countdownNumber = 1;
+        }
+        teamOneShootButton.className = 'inactive';
+        teamTwoShootButton.className = 'inactive';
     }
 })
 
@@ -63,17 +71,35 @@ let teamTwoNumShots = 0;
 let teamTwoNumGoals = 0;
 teamTwoShootButton.addEventListener("click", function () {
     
-    teamTwoShots.innerHTML = teamTwoNumShots += 1;
-    
-    shotChance = Math.random();
-    console.log(shotChance);
-    
-    if(shotChance>0.5) {
-        teamTwoGoals.innerHTML = teamTwoNumGoals += 1;
-        goalMade.play();
-    }
-    else {
-        teamTwoGoals.innerHTML = teamTwoNumGoals;
-        goalMiss.play();
+    if(countdownNumber >= 3) {
+
+        countdownNumber = 0;
+
+        teamTwoShots.innerHTML = teamTwoNumShots += 1;
+        
+        shotChance = Math.random();
+        console.log(shotChance);
+        
+        if(shotChance>0.5) {
+            teamTwoGoals.innerHTML = teamTwoNumGoals += 1;
+            goalMade.play();
+        }
+        else {
+            teamTwoGoals.innerHTML = teamTwoNumGoals;
+            goalMiss.play();
+            countdownNumber = 1;
+        }
+        teamOneShootButton.className = 'inactive';
+        teamTwoShootButton.className = 'inactive';
     }
 })
+
+// JS for countdown timer - can only shoot every 3 seconds
+countdownNumber = setInterval(increment, 1000)
+function increment() {
+    countdownNumber += 1;   
+    if(countdownNumber >= 3) {
+        teamOneShootButton.className = 'active';
+        teamTwoShootButton.className = 'active';
+    }
+}

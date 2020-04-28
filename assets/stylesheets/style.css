@@ -13,3 +13,14 @@
 #reset-container, h1 {
     text-align: center;
 }
+
+.active {
+    background-color: rgb(236, 234, 234);
+    color: black;
+    border: 1px solid black;
+}
+
+.inactive {
+    background-color: darkgrey;
+    color: grey;
+}
