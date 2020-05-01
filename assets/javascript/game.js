@@ -1,20 +1,11 @@
 const goalMade = document.querySelector("#goal");
 const goalMiss = document.querySelector("#miss");
-//const teamOneHit = document.querySelector("#teamone-hit");
-//const teamOneMiss = document.querySelector("#teamone-miss");
-//const teamTwoHit = document.querySelector("#teamtwo-hit");
-//const teamTwoMiss = document.querySelector("#teamtwo-miss");
+const teamOneHit = document.querySelector("#teamone-hit");
+const teamOneMiss = document.querySelector("#teamone-miss");
+const teamTwoHit = document.querySelector("#teamtwo-hit");
+const teamTwoMiss = document.querySelector("#teamtwo-miss");
 let shotChance = 0;
 let countdownNumber = 3;
-let timeStamp = new Date().getTime();
-let teamOneHit = document.querySelector("#teamone-hit");
-teamOneHit.src = "Target_Hit.gif?t=" + timeStamp;
-let teamOneMiss = document.querySelector("#teamone-miss");
-teamOneMiss.src = "Target_Miss.gif?t=" + timeStamp;
-let teamTwoHit = document.querySelector("#teamtwo-hit");
-teamTwoHit.src = "Target_Hit.gif?t=" + timeStamp;
-let teamTwoMiss = document.querySelector("#teamtwo-miss");
-teamTwoMiss.src = "Target_Miss.gif?t=" + timeStamp;
 
 // JS for the reset button and counter
 let resetCount = 0;
@@ -44,10 +35,10 @@ resetButton.addEventListener("click", function() {
     teamTwoShots.innerHTML = teamTwoNumShots;
     teamTwoGoals.innerHTML = teamTwoNumGoals;
 
-    //teamOneHit.style.visibility = "hidden";
-    //teamOneMiss.style.visibility = "hidden";
-    //teamTwoHit.style.visibility = "hidden";
-    //teamTwoMiss.style.visibility = "hidden";
+    teamOneHit.style.visibility = "hidden";
+    teamOneMiss.style.visibility = "hidden";
+    teamTwoHit.style.visibility = "hidden";
+    teamTwoMiss.style.visibility = "hidden";
 })
 
 // JS for team ONE
@@ -68,7 +59,7 @@ teamOneShootButton.addEventListener("click", function () {
         countdownNumber = 0;
 
         teamOneShots.innerHTML = teamOneNumShots += 1;
-        
+
         shotChance = Math.random();
         console.log(shotChance);
         
