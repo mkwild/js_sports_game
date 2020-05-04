@@ -1,11 +1,22 @@
+const fanfare = document.querySelector("#fanfare");
 const goalMade = document.querySelector("#goal");
 const goalMiss = document.querySelector("#miss");
 const teamOneHit = document.querySelector("#teamone-hit");
 const teamOneMiss = document.querySelector("#teamone-miss");
 const teamTwoHit = document.querySelector("#teamtwo-hit");
 const teamTwoMiss = document.querySelector("#teamtwo-miss");
+const startButton = document.querySelector(".start-button");
+const GUI = document.querySelector("#game-interface");
 let shotChance = 0;
 let countdownNumber = 3;
+
+// Start Button
+startButton.addEventListener("click", function() {
+    fanfare.play();
+    GUI.style.visibility = "visible";
+    startButton.style.visibility = "hidden";
+
+})
 
 // JS for the reset button and counter
 let resetCount = 0;
@@ -39,6 +50,8 @@ resetButton.addEventListener("click", function() {
     teamOneMiss.style.visibility = "hidden";
     teamTwoHit.style.visibility = "hidden";
     teamTwoMiss.style.visibility = "hidden";
+
+    fanfare.play();
 })
 
 // JS for team ONE
@@ -49,10 +62,16 @@ let teamOneNumShots = 0;
 let teamOneNumGoals = 0;
 teamOneShootButton.addEventListener("click", function () {
 
+    teamOneHit.src = "";
+    teamOneHit.src = "Target_Hit.gif";
+    teamOneMiss.src = "";
+    teamOneMiss.src = "Target_Miss.gif";
+
     teamOneHit.style.visibility = "hidden";
     teamOneMiss.style.visibility = "hidden";
     teamTwoHit.style.visibility = "hidden";
     teamTwoMiss.style.visibility = "hidden";
+
     
     if(countdownNumber >= 3) {
 
@@ -63,15 +82,19 @@ teamOneShootButton.addEventListener("click", function () {
         shotChance = Math.random();
         console.log(shotChance);
         
-        if(shotChance>0.5) {
+        if(shotChance>0.42) {
             teamOneGoals.innerHTML = teamOneNumGoals += 1;
             goalMade.play();
+            teamOneHit.style.order = "0";
+            teamOneMiss.style.order = "1";
             teamOneHit.style.visibility = "visible";
         }
         else {
             teamOneGoals.innerHTML = teamOneNumGoals;
             goalMiss.play();
             countdownNumber = 1;
+            teamOneHit.style.order = "1";
+            teamOneMiss.style.order = "0";
             teamOneMiss.style.visibility = "visible";
         }
         teamOneShootButton.className = 'inactive';
@@ -87,6 +110,11 @@ let teamTwoNumShots = 0;
 let teamTwoNumGoals = 0;
 teamTwoShootButton.addEventListener("click", function () {
 
+    teamTwoHit.src = "";
+    teamTwoHit.src = "Target_Hit.gif";
+    teamTwoMiss.src = "";
+    teamTwoMiss.src = "Target_Miss.gif";
+
     teamOneHit.style.visibility = "hidden";
     teamOneMiss.style.visibility = "hidden";
     teamTwoHit.style.visibility = "hidden";
@@ -101,15 +129,19 @@ teamTwoShootButton.addEventListener("click", function () {
         shotChance = Math.random();
         console.log(shotChance);
         
-        if(shotChance>0.5) {
+        if(shotChance>0.42) {
             teamTwoGoals.innerHTML = teamTwoNumGoals += 1;
             goalMade.play();
+            teamTwoHit.style.order = "1";
+            teamTwoMiss.style.order = "0";
             teamTwoHit.style.visibility = "visible";
         }
         else {
             teamTwoGoals.innerHTML = teamTwoNumGoals;
             goalMiss.play();
             countdownNumber = 1;
+            teamTwoHit.style.order = "0";
+            teamTwoMiss.style.order = "1";
             teamTwoMiss.style.visibility = "visible";
         }
         teamOneShootButton.className = 'inactive';

@@ -3,15 +3,21 @@
 }
 .left {
     float: left;
+    margin-left: 15%;
 }
 .right {
     float: right;
+    margin-right: 15%;
 }
 .clear {
     clear: both;
 }
 #reset-container, h1 {
     text-align: center;
+}
+
+#game-interface {
+    visibility: hidden;
 }
 
 body {
@@ -54,18 +60,29 @@ button#reset-button {
     color: rgb(0, 0, 199);
 }
 
+.target-img-left {
+    display: flex;
+    margin-top: 10px;
+}
+
+.target-img-right {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 10px;
+}
+
 img#teamone-hit {
-    float: left;
     height: 64px;
     width: 64px;
     visibility: hidden;
+    order: 0;
 }
 
 img#teamone-miss {
-    float: left;
     height: 64px;
     width: 64px;
     visibility: hidden;
+    order: 1;
 }
 
 img#teamtwo-hit {
@@ -73,6 +90,7 @@ img#teamtwo-hit {
     height: 64px;
     width: 64px;
     visibility: hidden;
+    order: 0;
 }
 
 img#teamtwo-miss {
@@ -80,4 +98,18 @@ img#teamtwo-miss {
     height: 64px;
     width: 64px;
     visibility: hidden;
+    order: 1;
+}
+
+#start-button-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -200px;
+}
+
+button.start-button {
+    height: 44px;
+    width: 193px;
+    font-size: 1.5em;
 }

@@ -10,47 +10,53 @@
 <body>
     <div>
         <h1>My JS Game</h1>
-        <div id="reset-container">
-            <button id="reset-button">RESET</button><br>
-            NUMBER OF RESETS: <span id="num-resets">0</span>
+        <div id="game-interface">
+            <div id="reset-container">
+                <button id="reset-button">RESET</button><br>
+                NUMBER OF RESETS: <span id="num-resets">0</span>
+            </div>
+            <div class="clear"></div>
+            <div class="left">
+                <h2>
+                    Team 1
+                </h2>
+                <div class="goals">
+                    SHOTS TAKEN: <span id="teamone-numshots">0</span><br>
+                    GOALS: <span id="teamone-numgoals">0</span>
+                </div>
+                <div>
+                    <button id="teamone-shoot-button" class="active">SHOOT</button>
+                </div>
+                <div class="target-img-left">
+                    <img src="Target_Hit.gif" id="teamone-hit">
+                    <img src="Target_Miss.gif" id="teamone-miss">
+                </div>
+            </div>
+            <div class="right">
+                <h2>
+                    Team 2
+                </h2>
+                <div class="goals">
+                    SHOTS TAKEN: <span id="teamtwo-numshots">0</span><br>
+                    GOALS: <span id="teamtwo-numgoals">0</span>
+                </div>
+                <div>
+                    <button id="teamtwo-shoot-button" class="active">SHOOT</button>
+                </div>
+                <div class="target-img-right">
+                    <img src="Target_Hit.gif" id="teamtwo-hit">
+                    <img src="Target_Miss.gif" id="teamtwo-miss">
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-        <div class="left">
-            <h2>
-                Team 1
-            </h2>
-            <div class="goals">
-                SHOTS TAKEN: <span id="teamone-numshots">0</span><br>
-                GOALS: <span id="teamone-numgoals">0</span>
-            </div>
-            <div>
-                <button id="teamone-shoot-button" class="active">SHOOT</button>
-            </div>
-            <div class="target-img">
-                <img src="Target_Hit.gif" id="teamone-hit">
-                <img src="Target_Miss.gif" id="teamone-miss">
-            </div>
+        <div id="start-button-container">
+            <button class="start-button">START GAME</button>
         </div>
-        <div class="right">
-            <h2>
-                Team 2
-            </h2>
-            <div class="goals">
-                SHOTS TAKEN: <span id="teamtwo-numshots">0</span><br>
-                GOALS: <span id="teamtwo-numgoals">0</span>
-            </div>
-            <div>
-                <button id="teamtwo-shoot-button" class="active">SHOOT</button>
-            </div>
-            <div class="target-img">
-                <img src="Target_Hit.gif" id="teamtwo-hit">
-                <img src="Target_Miss.gif" id="teamtwo-miss">
-            </div>
-        </div>
-        <div class="clear"></div>
     </div>
     <audio src="./assets/applause.wav" id="goal">Your browser does not support the audio element.</audio>
     <audio src="./assets/boo.wav" id="miss">Your browser does not support the audio element.</audio>
+    <audio src="assets/fanfare2.wav" id="fanfare">Your browser does not support the audio element.</audio>
     <script src="./assets/javascript/game.js"></script>
 </body>
 </html>
